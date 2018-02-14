@@ -15,14 +15,7 @@ class SubstitutionCipher(Cipher):
 		enciphered_msg = ""
 
 		for char in msg:
-			if char.isalpha():
-				index = self.alphabet.index(char.lower())
-				if char.isupper():
-					enciphered_msg += self.substitution[index].upper()
-				else:
-					enciphered_msg += self.substitution[index]
-			else:
-				enciphered_msg += char
+			enciphered_msg += self.substitute(char, self.alphabet, self.substitution)
 
 		return enciphered_msg
 
@@ -30,14 +23,7 @@ class SubstitutionCipher(Cipher):
 		deciphered_msg = ""
 
 		for char in msg:
-			if char.isalpha():
-				index = self.substitution.index(char.lower())
-				if char.isupper():
-					deciphered_msg += self.alphabet[index].upper()
-				else:
-					deciphered_msg += self.alphabet[index]
-			else:
-				deciphered_msg += char
+			deciphered_msg += self.substitute(char, self.substitution, self.alphabet)
 
 		return deciphered_msg
 
@@ -50,3 +36,13 @@ class SubstitutionCipher(Cipher):
 					substitution += letter
 		
 		return substitution
+
+	def substitute(self, char, from_alphabet, to_alphabet):
+		if char.isalpha():
+			index = from_alphabet.index(char.lower())
+			if char.isupper():
+				return to_alphabet[index].upper()
+			else:
+				return to_alphabet[index]
+		else:
+			return char
