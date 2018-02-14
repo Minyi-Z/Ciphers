@@ -9,7 +9,7 @@ class SubstitutionCipher(Cipher):
 
 	def check_key(self):
 		if not isinstance(self.key, str) or not self.key.isalpha() or len(self.key) > 26:
-			raise ValueError("Key must be a string consisting of between 1 and 26 characters")
+			raise ValueError("Key must be a string consisting of between 1 and 26 letters")
 
 	def encipher(self, msg):
 		enciphered_msg = ""
