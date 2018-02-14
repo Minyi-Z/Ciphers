@@ -9,7 +9,7 @@ class SubstitutionCipher(Cipher):
 
 	def check_key(self):
 		if not isinstance(self.key, str) or not self.key.isalpha() or len(self.key) > 26:
-			raise TypeError("Key must consist of letters and be less than or equal to 26 characters.")
+			raise ValueError("Key must be a string consisting of between 1 and 26 characters")
 
 	def encipher(self, msg):
 		enciphered_msg = ""
@@ -36,10 +36,11 @@ class SubstitutionCipher(Cipher):
 		return deciphered_msg
 
 	def get_substitution(self):
-		substitution = self.key
+		substitution = ''.join(sorted(set(self.key), key=self.key.index))
 
-		for letter in self.alphabet:
-			if letter not in substitution:
-				substitution += letter
+		if len(substitution) < 26:
+			for letter in self.alphabet:
+				if letter not in substitution:
+					substitution += letter
 		
 		return substitution
