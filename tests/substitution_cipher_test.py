@@ -16,18 +16,18 @@ class TestSubstitutionCipher(object):
 
 	@pytest.mark.parametrize("key, expected_substitution", [
 							("repeat", "repatbcdfghijklmnoqsuvwxyz"),
-							("qwertyuiopasdfghjklzxcvbnm", "qwertyuiopasdfghjklzxcvbnm"),
-							("qwerty", "qwertyabcdfghijklmnopsuvxz")])
+							("qweRtyuiopasdFghjKlzxcvBnm", "qwertyuiopasdfghjklzxcvbnm"),
+							("qwErtY", "qwertyabcdfghijklmnopsuvxz")])
 	def test_get_substitution_short_key(self, key, expected_substitution):
 		cipher = SubstitutionCipher(key)
 		assert cipher.substitution == expected_substitution
 	
 	def test_encipher(self):
 		cipher = SubstitutionCipher("qwerty")
-		enciphered_msg = cipher.encipher("meow")
-		assert enciphered_msg == "htju"
+		enciphered_msg = cipher.encipher("Do not go gentle into that good night.!?#@()")
+		assert enciphered_msg == "Rj ijo aj atiogt cioj obqo ajjr icabo.!?#@()"
 
 	def test_decipher(self):
 		cipher = SubstitutionCipher("qwerty")
-		deciphered_msg = cipher.decipher("htju")
-		assert deciphered_msg == "meow"
+		deciphered_msg = cipher.decipher("Rj ijo aj atiogt cioj obqo ajjr icabo.!?#@()")
+		assert deciphered_msg == "Do not go gentle into that good night.!?#@()"
