@@ -1,3 +1,7 @@
+# subsitution cipher where the ciphertext alphabet is a shifted version of the plaintext alphabet
+# number of shifts defined by key
+# eg. key=2 ciphertext_alphabet="cdefghijklmnopqrstuvwxyzab"
+
 from substitution_cipher import SubstitutionCipher
 
 class CaesarCipher(SubstitutionCipher):

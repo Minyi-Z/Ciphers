@@ -1,3 +1,9 @@
+# each letter is replaced by another
+# ciphertext alphabet defined by key
+# duplicate letters removed from the key
+# then if it is less than 26 letters, remaining letters are added on
+# eg. key="interstellar", ciphertext_alphabet="interslabcdfghjkmopquvwxyz"
+
 from base_cipher import Cipher
 
 class SubstitutionCipher(Cipher):
