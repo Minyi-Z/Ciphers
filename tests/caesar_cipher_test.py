@@ -4,10 +4,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from caesar_cipher import CaesarCipher
 
 class TestCaesarCipher(object):
-	def test_no_key(self):
-		with pytest.raises(TypeError):
-			CaesarCipher()
-
 	@pytest.mark.parametrize("key", ["10", -1, 0, 26])
 	def test_invalid_key(self, key):
 		with pytest.raises(ValueError) as err_msg:
