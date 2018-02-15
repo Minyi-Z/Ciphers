@@ -16,10 +16,10 @@ class TestCaesarCipher(object):
 
 	def test_encipher(self):
 		cipher = CaesarCipher(10)
-		enciphered_msg = cipher.encipher("abcdefghijklmnopqrstuvwxyz")
-		assert enciphered_msg == "klmnopqrstuvwxyzabcdefghij"
+		enciphered_msg = cipher.encipher("Abcd.efgHi#jklm noPQrstuv?Wxyz")
+		assert enciphered_msg == "Klmn.opqRs#tuvw xyZAbcdef?Ghij"
 
 	def test_decipher(self):
 		cipher = CaesarCipher(10)
-		deciphered_msg = cipher.decipher("klmnopqrstuvwxyzabcdefghij")
-		assert deciphered_msg == "abcdefghijklmnopqrstuvwxyz"
+		deciphered_msg = cipher.decipher("Klmn.opqRs#tuvw xyZAbcdef?Ghij")
+		assert deciphered_msg == "Abcd.efgHi#jklm noPQrstuv?Wxyz"

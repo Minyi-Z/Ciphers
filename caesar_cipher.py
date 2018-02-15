@@ -1,34 +1,17 @@
-from base_cipher import Cipher
+from substitution_cipher import SubstitutionCipher
 
-class CaesarCipher(Cipher):
+class CaesarCipher(SubstitutionCipher):
 	def check_key(self):
 		if not isinstance(self.key, int) or self.key not in range(1, 26):
 			raise ValueError("Key must be an integer between 1 and 25.")
 	
-	def encipher(self, msg):
-		enciphered_msg = ""
+	def get_substitution(self):
+		substitution = ""
 
-		for char in msg:
-			if char.isalpha():
-				new_char_ascii = ord(char)+self.key
-				if new_char_ascii > ord('z'):
-					new_char_ascii -= 26
-				enciphered_msg += chr(new_char_ascii)
-			else:
-				enciphered_msg += char
+		for char in self.alphabet:
+			char_sub_ascii = ord(char)+self.key
+			if char_sub_ascii > ord('z'):
+				char_sub_ascii -= 26
+			substitution += chr(char_sub_ascii)
 
-		return enciphered_msg
-
-	def decipher(self, msg):
-		deciphered_msg = ""
-
-		for char in msg:
-			if char.isalpha():
-				new_char_ascii = ord(char)-self.key
-				if new_char_ascii < ord('a'):
-					new_char_ascii += 26
-				deciphered_msg += chr(new_char_ascii)
-			else:
-				deciphered_msg += char
-
-		return deciphered_msg
+		return substitution
