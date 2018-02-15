@@ -18,7 +18,7 @@ class TestSubstitutionCipher(object):
 							("repeat", "repatbcdfghijklmnoqsuvwxyz"),
 							("qweRtyuiopasdFghjKlzxcvBnm", "qwertyuiopasdfghjklzxcvbnm"),
 							("qwErtY", "qwertyabcdfghijklmnopsuvxz")])
-	def test_get_substitution_short_key(self, key, expected_substitution):
+	def test_get_substitution_key(self, key, expected_substitution):
 		cipher = SubstitutionCipher(key)
 		assert cipher.substitution == expected_substitution
 	

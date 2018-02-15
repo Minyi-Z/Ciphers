@@ -14,6 +14,10 @@ class TestCaesarCipher(object):
 			CaesarCipher(key)
 		assert str(err_msg.value) == "Key must be an integer between 1 and 25."
 
+	def test_get_substitution_key(self):
+		cipher = CaesarCipher(10)
+		assert cipher.substitution == "klmnopqrstuvwxyzabcdefghij"
+
 	def test_encipher(self):
 		cipher = CaesarCipher(10)
 		enciphered_msg = cipher.encipher("Abcd.efgHi#jklm noPQrstuv?Wxyz")
