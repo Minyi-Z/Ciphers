@@ -25,9 +25,7 @@ class PlayfairCipher(SubstitutionCipher):
 
 		deciphered_msg = list("".join(deciphered_msg))
 
-		last_char = deciphered_msg[len(deciphered_msg) - 1]
-		if last_char == "x":
-			last_char = ""
+		last_char = deciphered_msg[len(deciphered_msg) - 1] if deciphered_msg and not deciphered_msg[len(deciphered_msg) - 1] == 'x' else ""
 			
 		deciphered_msg = [deciphered_msg[i] for i in range(len(deciphered_msg) - 1) \
 							if deciphered_msg[i] != "x" or deciphered_msg[i-1].lower() != deciphered_msg[i+1].lower()]
