@@ -34,7 +34,8 @@ class SubstitutionCipher(Cipher):
 		return deciphered_msg
 
 	def get_substitution(self):
-		substitution = ''.join(sorted(set(self.key), key=self.key.index)).lower()
+		lowercase_key = self.key.lower()
+		substitution = ''.join(sorted(set(lowercase_key), key=lowercase_key.index))
 
 		if len(substitution) < 26:
 			for letter in self.alphabet:
